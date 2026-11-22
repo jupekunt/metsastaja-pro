@@ -164,3 +164,6 @@ dialog input[type=checkbox]{width:22px;height:22px;flex:none;accent-color:var(--
 .palkki{display:grid;grid-template-columns:minmax(90px,34%) 1fr auto;align-items:center;gap:8px;font-size:14px}
 .palkki i{display:block;height:10px;border-radius:5px;background:var(--korostus);min-width:2px}
 .palkki span{font-variant-numeric:tabular-nums;color:var(--himmea);white-space:nowrap}
+
+/* kaikki valintaruudut pitävät kokonsa, vaikka viereinen teksti rivittyisi */
+input[type=checkbox],input[type=radio]{flex:none;min-width:22px;min-height:22px}
