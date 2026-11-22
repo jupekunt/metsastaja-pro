@@ -1,0 +1,166 @@
+:root{
+  --tausta:#eef2f5;--pinta:#fff;--teksti:#12222f;--himmea:#5d6f7d;--viiva:#d9e1e7;
+  --paa:#0f2a43;--korostus:#0b7a8f;--korostus-t:#fff;--ok:#1f8a4c;--pian:#b26a00;--myo:#c0392b;
+  --ala:calc(62px + env(safe-area-inset-bottom));
+}
+@media (prefers-color-scheme:dark){:root{
+  --tausta:#0b1620;--pinta:#14222e;--teksti:#e6edf2;--himmea:#93a4b1;--viiva:#243542;
+  --paa:#0b1620;--korostus:#2bb3c9;--korostus-t:#04222a;--ok:#4cc27d;--pian:#f0a93a;--myo:#ff7566;
+}}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--tausta);color:var(--teksti);font:16px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-text-size-adjust:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+#yla{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;background:var(--paa);color:#fff;padding:calc(10px + env(safe-area-inset-top)) 16px 10px}
+#yla h1{margin:0;font-size:19px;font-weight:650;letter-spacing:.2px}
+#verkko{font-size:12px;opacity:.75}
+main{max-width:640px;margin:0 auto;padding:14px 14px calc(var(--ala) + 18px)}
+#valikko{position:fixed;left:0;right:0;bottom:0;z-index:6;display:flex;background:var(--pinta);border-top:1px solid var(--viiva);padding-bottom:env(safe-area-inset-bottom)}
+#valikko button{flex:1;position:relative;display:flex;flex-direction:column;align-items:center;gap:2px;border:0;background:none;padding:8px 0 7px;color:var(--himmea);font-size:11.5px;cursor:pointer}
+#valikko svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+#valikko button.on{color:var(--korostus);font-weight:600}
+#valikko i{position:absolute;top:4px;left:calc(50% + 6px);min-width:17px;height:17px;border-radius:9px;background:var(--myo);color:#fff;font:600 11px/17px system-ui;text-align:center;padding:0 4px}
+#valikko i:empty{display:none}
+
+.kortti{background:var(--pinta);border:1px solid var(--viiva);border-radius:14px;padding:14px;margin-bottom:12px}
+.kortti h2{margin:0 0 8px;font-size:14px;font-weight:600;color:var(--himmea);text-transform:uppercase;letter-spacing:.6px}
+.luvut{display:grid;grid-template-columns:repeat(auto-fit,minmax(92px,1fr));gap:12px 8px}
+.luku b{display:block;font-size:22px;font-weight:650;font-variant-numeric:tabular-nums;line-height:1.15}
+.luku span{font-size:12px;color:var(--himmea)}
+.iso{text-align:center;padding:6px 0 2px}
+.iso b{display:block;font-size:76px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums;letter-spacing:-2px}
+.iso span{color:var(--himmea);font-size:14px}
+.tila{display:flex;align-items:center;gap:9px;font-weight:600;margin-bottom:4px}
+.pallo{width:11px;height:11px;border-radius:50%;background:var(--himmea);flex:none}
+.pallo.rec{background:var(--myo);animation:syke 1.4s infinite}
+.pallo.odota{background:var(--pian)}
+@keyframes syke{50%{opacity:.25}}
+.pieni{font-size:13px;color:var(--himmea)}
+.nappi{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:12px;border:1px solid var(--viiva);background:var(--pinta);font-weight:600;cursor:pointer}
+.nappi.paa{background:var(--korostus);border-color:var(--korostus);color:var(--korostus-t)}
+.nappi.vaara{color:var(--myo)}
+.nappi.leva{width:100%}
+.nappi.pien{min-height:36px;padding:0 12px;font-size:14px;border-radius:10px}
+.napit{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.napit .nappi{flex:1}
+.rivi{display:flex;align-items:center;gap:10px;padding:11px 0;border-top:1px solid var(--viiva);cursor:pointer}
+.rivi:first-of-type{border-top:0}
+.rivi .v{flex:1;min-width:0}
+.rivi .v b{display:block;font-weight:600;overflow-wrap:anywhere}
+.rivi .o{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.rivi .o b{display:block}
+.valruutu{width:22px;height:22px;flex:none;accent-color:var(--myo);pointer-events:none}
+.nappi:disabled{opacity:.45;cursor:default}
+.merkki{display:inline-block;padding:2px 9px;border-radius:20px;font-size:12px;font-weight:650;white-space:nowrap;border:1px solid currentColor}
+.merkki.ok{color:var(--ok)}.merkki.pian{color:var(--pian)}.merkki.myohassa{color:var(--myo)}.merkki.tuntematon{color:var(--himmea)}
+.otsrivi{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:4px 2px 10px}
+.otsrivi h2{margin:0;font-size:18px}
+.otsrivi select{padding:7px 9px;border-radius:9px;border:1px solid var(--viiva);background:var(--pinta)}
+.tyhja{color:var(--himmea);text-align:center;padding:14px 6px}
+.kartta{width:100%;height:260px;display:block;border-radius:10px;background:#cfe0ea}
+@media (prefers-color-scheme:dark){.kartta{background:#1d3342}}
+.kartta{touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+.kartta.paa{height:min(52vh,460px)}
+main.taysi{padding:0;max-width:none}
+.kokok{position:fixed;left:0;right:0;top:var(--ylak,47px);bottom:var(--ala);overflow:hidden;background:#cfe0ea}
+.kartta.taysi{width:100%;height:100%;border-radius:0}
+.kmittari{position:absolute;left:10px;top:10px;display:flex;flex-direction:column;gap:2px;min-width:104px;padding:8px 12px 9px;border-radius:14px;background:rgba(255,255,255,.93);color:#12222f;box-shadow:0 1px 6px rgba(0,0,0,.3);pointer-events:none;font-variant-numeric:tabular-nums}
+.kmittari b{font-weight:700;line-height:1}
+.kmittari span{font-size:13px;color:#5d6f7d;margin-left:5px}
+.knop b{font-size:46px;letter-spacing:-1px}
+.ksuu{border-top:1px solid #d9e1e7;padding-top:6px;margin-top:5px}
+.ksuu b{font-size:24px}
+.ksuu span{font-size:15px;font-weight:600;color:#12222f}
+.kraj{display:flex;align-items:center;gap:8px;border-top:1px solid #d9e1e7;padding-top:7px;margin-top:5px;pointer-events:auto;cursor:pointer}
+.kraj[hidden]{display:none}
+.kraj i{flex:none;width:34px;height:34px;border-radius:50%;border:4px solid #d0121c;background:#fff;color:#12222f;font:700 14px/26px system-ui,sans-serif;text-align:center;font-style:normal}
+.kraj span{margin:0;font-size:12px;max-width:92px;line-height:1.2}
+.kraj.yli i{background:#d0121c;color:#fff;animation:syke .7s infinite}
+#kNopeus.yli{color:#d0121c}
+.kkal{display:flex;align-items:center;border-top:1px solid #d9e1e7;padding-top:7px;margin-top:5px}
+.kkal[hidden]{display:none}
+.kkal i{width:26px;height:4px;border-radius:2px;background:#0b7a8f;margin-right:8px;transition:transform .2s}
+.kkal b{font-size:22px}
+.kkal span{font-size:13px}
+.ktuuli{position:absolute;left:128px;right:64px;top:10px;display:flex;flex-direction:column;align-items:flex-start;gap:1px;border:0;border-radius:14px;padding:7px 12px;background:rgba(255,255,255,.93);color:#12222f;box-shadow:0 1px 6px rgba(0,0,0,.3);cursor:pointer;text-align:left}
+.ktuuli[hidden]{display:none}
+/* mittari ja tuulilaatikko vierekkäin: laatikko alkaa aina mittarin oikeasta reunasta eikä mene sen päälle */
+.kyla{position:absolute;left:10px;top:10px;right:62px;display:flex;align-items:flex-start;gap:8px;pointer-events:none}
+.kyla .kmittari{position:static;flex:none}
+.kyla .ktuuli{position:static;flex:1 1 0;min-width:0;pointer-events:auto}
+.kyla .ktuuli span{overflow-wrap:anywhere}
+.ktuuli b{font-size:14px}
+.ktuuli span{font-size:12.5px;color:#42525f}
+a.nappi{text-decoration:none;color:inherit}
+.kytkin .pieni{font-weight:400}
+.kais{position:absolute;left:10px;bottom:68px;border:0;border-radius:16px;padding:6px 12px;background:rgba(255,255,255,.93);color:#4b1d8f;font-size:13px;font-weight:600;box-shadow:0 1px 6px rgba(0,0,0,.3);cursor:pointer}
+.kais[hidden]{display:none}
+.onreitti .kais{bottom:134px}
+.ktila{position:absolute;left:10px;bottom:26px;max-width:calc(100% - 20px);border:0;border-radius:20px;padding:8px 14px 8px 30px;background:rgba(255,255,255,.93);color:#12222f;font-size:14px;font-weight:600;box-shadow:0 1px 6px rgba(0,0,0,.3);cursor:pointer}
+.ktila::before{content:"";position:absolute;left:12px;top:50%;width:10px;height:10px;margin-top:-5px;border-radius:50%;background:#8a98a3}
+.ktila.odota::before{background:#e39a1f}
+.ktila.rec::before{background:#e01b24;animation:syke 1.4s infinite}
+.kreitti{position:absolute;left:10px;right:10px;bottom:26px;display:flex;align-items:center;gap:6px;padding:8px 8px 8px 14px;border-radius:14px;background:rgba(255,255,255,.95);color:#12222f;box-shadow:0 1px 6px rgba(0,0,0,.3)}
+.kreitti .v{flex:1;min-width:0;cursor:pointer}
+.kreitti .v b{display:block;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kreitti .v span{font-size:13px;color:#42525f}
+.kreitti button{width:40px;height:40px;flex:none;border-radius:50%;border:1px solid #d9e1e7;background:#fff;color:#12222f;font-size:17px;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.kreitti svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.kreitti button.on{background:#0b7a8f;border-color:#0b7a8f;color:#fff}
+.onreitti .ktila{bottom:92px}
+.kreitti.sivussa{background:#fff1f0;box-shadow:0 0 0 2px #e01b24,0 1px 6px rgba(0,0,0,.3)}
+.kreitti.sivussa .v b{color:#c0121c}
+/* ilmoitus ei saa peittää reittipalkkia eikä tallennuksen tilaa */
+body:has(.kreitti) #ilmoitus{bottom:calc(var(--ala) + 140px)}.knapit svg{stroke-linejoin:round}
+.hakurivi{display:flex;gap:8px}
+.hakurivi input{flex:1;min-width:0}
+.plista{flex-shrink:0;max-height:34vh;overflow:auto;border:1px solid var(--viiva);border-radius:10px;padding:0 10px}
+.plista:empty{display:none}
+dialog h4{margin:6px 0 0;font-size:14px;color:var(--himmea);text-transform:uppercase;letter-spacing:.5px}
+dialog form{max-height:calc(100vh - 40px);overflow:auto}
+.ktekija{position:absolute;right:6px;bottom:4px;font-size:10.5px;color:#12222f;background:rgba(255,255,255,.75);padding:1px 6px;border-radius:6px;pointer-events:none}
+@media (prefers-color-scheme:dark){.kokok{background:#1d3342}}
+dialog form>.nappi{width:100%}
+.karttak{position:relative}
+.knapit{position:absolute;right:8px;top:8px;display:flex;flex-direction:column;gap:7px}
+.knapit button{width:44px;height:44px;border-radius:50%;border:1px solid rgba(0,0,0,.18);background:#fff;color:#12222f;font-size:24px;line-height:1;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 5px rgba(0,0,0,.3);cursor:pointer;padding:0}
+.knapit svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
+.knapit button.on{background:#0b7a8f;color:#fff;border-color:#0b7a8f}
+dialog input[type=radio]{width:22px;height:22px;flex:none;accent-color:var(--korostus)}
+dialog progress{width:100%;height:10px;accent-color:var(--korostus)}
+.luvut.live{grid-template-columns:repeat(4,1fr);margin-top:10px}
+.luvut.live .nop b{font-size:34px;line-height:.95}
+.kayra{width:100%;height:140px;display:block}
+.ktyo{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:8px 0 4px}
+.ktyo select{padding:7px 9px;border-radius:9px;border:1px solid var(--viiva);background:var(--pinta)}
+.ktyo .nappi{min-width:40px;font-size:18px}
+.kytkin{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 0}
+.kytkin select{padding:8px 9px;border-radius:9px;border:1px solid var(--viiva);background:var(--pinta);max-width:60%}
+.kytkin input{width:22px;height:22px;accent-color:var(--korostus)}
+dialog{border:0;border-radius:16px;padding:0;width:min(520px,calc(100vw - 24px));max-height:calc(100vh - 40px);background:var(--pinta);color:var(--teksti)}
+dialog::backdrop{background:rgba(5,15,25,.55)}
+dialog form{padding:18px;display:flex;flex-direction:column;gap:11px}
+dialog h3{margin:0 0 2px;font-size:18px}
+dialog label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--himmea)}
+dialog label.cb{flex-direction:row;align-items:center;gap:10px;font-size:15px;color:var(--teksti)}
+dialog input:not([type=checkbox]):not([type=radio]),dialog select,dialog textarea{padding:11px;border-radius:10px;border:1px solid var(--viiva);background:var(--tausta);font-size:16px;width:100%}
+dialog input[type=checkbox]{width:22px;height:22px;accent-color:var(--korostus)}
+#ilmoitus{position:fixed;left:50%;bottom:calc(var(--ala) + 12px);transform:translateX(-50%);z-index:20;background:#12222f;color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;max-width:calc(100vw - 30px);opacity:0;pointer-events:none;transition:opacity .25s}
+#ilmoitus.on{opacity:.96}
+
+/* ---------- Metsästäjä Pro: metsän värit ja omat osat ---------- */
+:root{--paa:#1d3b2a;--korostus:#2f7d4f;--korostus-t:#fff}
+@media (prefers-color-scheme:dark){:root{--paa:#0e1a13;--tausta:#0d1711;--pinta:#16241b;--viiva:#27392d;--korostus:#57c98a;--korostus-t:#06210f}}
+.knapit button.on,.kreitti button.on{background:var(--korostus);border-color:var(--korostus);color:#fff}
+.krajat{border-top:1px solid #d9e1e7;padding-top:6px;margin-top:5px;font-size:13px;font-weight:650;color:#c0121c;max-width:130px;line-height:1.2}
+.krajat[hidden]{display:none}
+.krajat.ok{color:#1f8a4c}
+.lajimerkki{flex:none;width:30px;height:30px;border-radius:50%;color:#fff;font:700 14px/30px system-ui,sans-serif;text-align:center}
+.napit.isot .nappi{flex:1 1 45%;padding:14px 10px}
+.aurinko{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;text-align:center}
+.aurinko b{display:block;font-size:19px;font-variant-numeric:tabular-nums}
+.aurinko span{font-size:12px;color:var(--himmea)}
+.palkit{display:flex;flex-direction:column;gap:6px}
+.palkki{display:grid;grid-template-columns:minmax(90px,34%) 1fr auto;align-items:center;gap:8px;font-size:14px}
+.palkki i{display:block;height:10px;border-radius:5px;background:var(--korostus);min-width:2px}
+.palkki span{font-variant-numeric:tabular-nums;color:var(--himmea);white-space:nowrap}
