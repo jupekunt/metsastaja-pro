@@ -144,7 +144,7 @@ dialog h3{margin:0 0 2px;font-size:18px}
 dialog label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--himmea)}
 dialog label.cb{flex-direction:row;align-items:center;gap:10px;font-size:15px;color:var(--teksti)}
 dialog input:not([type=checkbox]):not([type=radio]),dialog select,dialog textarea{padding:11px;border-radius:10px;border:1px solid var(--viiva);background:var(--tausta);font-size:16px;width:100%}
-dialog input[type=checkbox]{width:22px;height:22px;accent-color:var(--korostus)}
+dialog input[type=checkbox]{width:22px;height:22px;flex:none;accent-color:var(--korostus)}
 #ilmoitus{position:fixed;left:50%;bottom:calc(var(--ala) + 12px);transform:translateX(-50%);z-index:20;background:#12222f;color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;max-width:calc(100vw - 30px);opacity:0;pointer-events:none;transition:opacity .25s}
 #ilmoitus.on{opacity:.96}
 
